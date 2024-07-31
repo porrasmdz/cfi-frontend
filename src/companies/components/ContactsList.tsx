@@ -28,6 +28,7 @@ export const ContactsList = () => {
         <SimpleList
           primaryText={(record: ReadContact) => record.full_name}
           secondaryText={(record: ReadContact) => record.contact_number}
+          linkType="show"
         />
       ) : (
         <Datagrid>

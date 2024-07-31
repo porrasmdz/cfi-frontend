@@ -25,6 +25,7 @@ export const CorpGroupList = () => {
         <SimpleList
           primaryText={(record: ReadCorporateGroup) => record.name}
           secondaryText={(record: ReadCorporateGroup) => record?.description}
+          linkType="show"
         />
       ) : (
         <Datagrid>

@@ -29,8 +29,9 @@ export const CompaniesList = () => {
       {isSmall ? (
         <SimpleList
           primaryText={(record) => record.name}
-          secondaryText={(record) => record.codename}
+          secondaryText={(record) => record.ruc}
           tertiaryText={(record) => record.email}
+          linkType="show"
         />
       ) : (
         <Datagrid>

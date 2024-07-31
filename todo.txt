@@ -1,0 +1,31 @@
+Inventory Module:
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar
+2. Crear vista Detail
+2.1 Crear formularios y vista de creación
+2.2 Crear formularios y vista de edición
+
+CyclicCount Module:
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar
+2. Crear vista Detail
+2.1 Crear formularios y vista de creación
+2.2 Crear formularios y vista de edición
+===
+3. Posibilidad de crear productos en el mismo conteo y buscar tmb
+4. Tabla de productos editable pero solo el campo unidades
+5. Posibilidad de ocultar o agregar columnas
+
+Companies Module:
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar
+2. Crear vista Detail
+2.1 Crear formularios y vista de creación
+2.2 Crear formularios y vista de edición
+
+Commons Module:
+1. Crear el layout de la pagina con navbar y sidebar local derecho para ver activity_registry en detail (responsive)
+2. Crear Menús superiores
+3. Poblar Notebooks de Inventory
+3.1 Poblar Notebooks de CyclicCount
+3.2 Poblar Notebooks de Companies
+4. Crear Modales Simples, Con Acciones, Con aceptar, con tipo
+5. Verificar Responsiveness
+6. Añadir atajos y autoguardado en recarga de página (localStorage and save?)

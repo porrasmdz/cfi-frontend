@@ -14,7 +14,11 @@ import { useMediaQuery, Theme } from "@mui/system";
 
 const companyFilters = [
   <TextInput source="name" label="Search" alwaysOn />,
-  <ReferenceInput source="corporate_group_id" label="Grupo" reference="corporative_groups" />,
+  <ReferenceInput
+    source="corporate_group_id"
+    label="Grupo"
+    reference="corporative_groups"
+  />,
 ];
 
 export const CompaniesList = () => {
@@ -38,8 +42,9 @@ export const CompaniesList = () => {
           <ReferenceField
             source="corporate_group_id"
             reference="corporative_groups"
+            sortBy="corporative_group.name"
           />
-          <DateField source="updated_at" />
+          
           <EditButton />
         </Datagrid>
       )}

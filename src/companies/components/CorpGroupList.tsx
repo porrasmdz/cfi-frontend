@@ -10,7 +10,10 @@ import {
   ReferenceInput,
   TextInput,
 } from "react-admin";
+import { ReadCorporateGroup } from "../interfaces/ICorporativeGroup";
+
 import { useMediaQuery, Theme } from "@mui/system";
+
 const groupFilters = [<TextInput source="name" label="Search" alwaysOn />];
 
 export const CorpGroupList = () => {
@@ -20,14 +23,13 @@ export const CorpGroupList = () => {
     <List filters={groupFilters}>
       {isSmall ? (
         <SimpleList
-          primaryText={(record) => record.name}
-          secondaryText={(record) => record.description}
+          primaryText={(record: ReadCorporateGroup) => record.name}
+          secondaryText={(record: ReadCorporateGroup) => record?.description}
         />
       ) : (
         <Datagrid>
           <TextField source="name" />
           <TextField source="description" />
-          <DateField source="updated_at" />
           <EditButton />
         </Datagrid>
       )}

@@ -66,11 +66,13 @@ import { ActivityRegistryList } from "./cyclic_counts/components/ActivityRegistr
 import { ActivityRegistryShow } from "./cyclic_counts/components/ActivityRegistryShow";
 import { ActivityRegistryEdit } from "./cyclic_counts/components/ActivityRegistryEdit";
 import { ActivityRegistryCreate } from "./cyclic_counts/components/ActivityRegistryCreate";
+
+import themes from "./commons/themes";
 //TODO: Automatically map resource to its api while editting and creating 
 // child inside parent resource CorpGroup > Companies, companies > contacts
 export const App = () => {
   return (
-    <Admin layout={Layout} theme={houseDarkTheme} dataProvider={dataProvider} dashboard={Dashboard}>
+    <Admin layout={Layout} {...themes} dataProvider={dataProvider} dashboard={Dashboard}>
       {/* Companies */}
       <Resource name="corporative_groups" 
       list={CorpGroupList}

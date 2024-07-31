@@ -1,11 +1,14 @@
+BUGS:
+* Redirection of related tables inside a ShowView is not working
+
 Inventory Module:
-1. Crear la vista de lista con sus filtros y funcionalidad de archivar
-2. Crear vista Detail
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
+2. Crear vista Detail [DONE]
 2.1 Crear formularios y vista de creación
 2.2 Crear formularios y vista de edición
 
 CyclicCount Module:
-1. Crear la vista de lista con sus filtros y funcionalidad de archivar
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar 
 2. Crear vista Detail
 2.1 Crear formularios y vista de creación
 2.2 Crear formularios y vista de edición
@@ -15,7 +18,7 @@ CyclicCount Module:
 5. Posibilidad de ocultar o agregar columnas
 
 Companies Module:
-1. Crear la vista de lista con sus filtros y funcionalidad de archivar
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
 2. Crear vista Detail
 2.1 Crear formularios y vista de creación
 2.2 Crear formularios y vista de edición
@@ -29,3 +32,4 @@ Commons Module:
 4. Crear Modales Simples, Con Acciones, Con aceptar, con tipo
 5. Verificar Responsiveness
 6. Añadir atajos y autoguardado en recarga de página (localStorage and save?)
+7. Hacer que los input de busqueda tengan cooldown para hacer el query (no quiero que haga query insta pq parpadea)

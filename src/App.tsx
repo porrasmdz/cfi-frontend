@@ -54,6 +54,18 @@ import { MeasureUnitList } from "./inventory/components/MeasureUnitList";
 import { MeasureUnitShow } from "./inventory/components/MeasureUnitShow";
 import { MeasureUnitEdit } from "./inventory/components/MeasureUnitEdit";
 import { MeasureUnitCreate } from "./inventory/components/MeasureUnitCreate";
+import { CyclicCountList } from "./cyclic_counts/components/CyclicCountList";
+import { CyclicCountShow } from "./cyclic_counts/components/CyclicCountShow";
+import { CyclicCountEdit } from "./cyclic_counts/components/CyclicCountEdit";
+import { CyclicCountCreate } from "./cyclic_counts/components/CyclicCountCreate";
+import { CountRegistryList } from "./cyclic_counts/components/CountRegistryList";
+import { CountRegistryShow } from "./cyclic_counts/components/CountRegistryShow";
+import { CountRegistryEdit } from "./cyclic_counts/components/CountRegistryEdit";
+import { CountRegistryCreate } from "./cyclic_counts/components/CountRegistryCreate";
+import { ActivityRegistryList } from "./cyclic_counts/components/ActivityRegistryList";
+import { ActivityRegistryShow } from "./cyclic_counts/components/ActivityRegistryShow";
+import { ActivityRegistryEdit } from "./cyclic_counts/components/ActivityRegistryEdit";
+import { ActivityRegistryCreate } from "./cyclic_counts/components/ActivityRegistryCreate";
 //TODO: Automatically map resource to its api while editting and creating 
 // child inside parent resource CorpGroup > Companies, companies > contacts
 export const App = () => {
@@ -123,19 +135,22 @@ export const App = () => {
       {/* Cyclic Counts */}
       
       <Resource name="cyclic_counts" 
-       list={ListGuesser}
-       show={ShowGuesser} 
-       edit={EditGuesser}
+       list={CyclicCountList}
+       show={CyclicCountShow} 
+       edit={CyclicCountEdit}
+       create={CyclicCountCreate}
         />
       <Resource name="count_registries" 
-        list={ListGuesser}
-        show={ShowGuesser} 
-        edit={EditGuesser}
+        list={CountRegistryList}
+        show={CountRegistryShow} 
+        edit={CountRegistryEdit}
+        create={CountRegistryCreate}
         />      
       <Resource name="activity_registries" 
-      list={ListGuesser}
-      show={ShowGuesser} 
-      edit={EditGuesser}
+      list={ActivityRegistryList}
+      show={ActivityRegistryShow} 
+      edit={ActivityRegistryEdit}
+      create={ActivityRegistryCreate}
       />
     </Admin>
   );

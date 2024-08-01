@@ -1,16 +1,38 @@
-import { BooleanField, Datagrid, DateField, List, ReferenceField, TextField } from 'react-admin';
+import {
+  SimpleList,
+  Datagrid,
+  List,
+  ReferenceField,
+  SearchInput,
+  TextField,
+} from "react-admin";
+import { useMediaQuery, Theme } from "@mui/system";
+import { DetailedMeasureUnit } from "../interfaces/IMeasureUnit";
 
-export const MeasureUnitList = () => (
-    <List>
+const measureUnitFilters = [
+  <SearchInput placeholder="Unidad de Medida" source="name" alwaysOn />,
+];
+export const MeasureUnitList = () => {
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+
+  return (
+    <List filters={measureUnitFilters}>
+      {isSmall ? (
+        <SimpleList
+          primaryText={(record: DetailedMeasureUnit) => record.name}
+          secondaryText={(record: DetailedMeasureUnit) =>
+            record.conversion_formula
+          }
+          tertiaryText={(record: DetailedMeasureUnit) => record.parent_id}
+          linkType="show"
+        />
+      ) : (
         <Datagrid>
-            <TextField source="id" />
-            <BooleanField source="is_archived" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-            <TextField source="deleted_at" />
-            <TextField source="name" />
-            <TextField source="conversion_formula" />
-            <ReferenceField source="parent_id" reference="parents" />
+          <TextField source="name" />
+          <TextField source="conversion_formula" />
+          <ReferenceField source="parent_id" reference="parents" />
         </Datagrid>
+      )}
     </List>
-);
+  );
+};

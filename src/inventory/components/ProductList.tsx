@@ -1,19 +1,49 @@
-import { BooleanField, Datagrid, DateField, List, NumberField, ReferenceField, TextField } from 'react-admin';
+import {
+  EditButton,
+  Datagrid,
+  List,
+  NumberField,
+  ReferenceField,
+  SearchInput,
+  ReferenceInput,
+  TextField,
+  SimpleList
+} from "react-admin";
 
-export const ProductList = () => (
-    <List>
+import { useMediaQuery, Theme } from "@mui/system";
+import { DetailedProduct, ReadProduct } from "../interfaces/IProduct";
+
+const productFilters = [
+  <SearchInput placeholder="Nombre de Producto" source="name" alwaysOn />,
+  <ReferenceInput
+    label="Categoría"
+    source="category_id"
+    reference="product_categories"
+  />,
+];
+export const ProductList = () => {
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+
+  return (
+    <List filters={productFilters}>
+      {isSmall ? (
+        <SimpleList
+          primaryText={(record: DetailedProduct) => record.name}
+          secondaryText={(record: DetailedProduct) =>record.unit_cost
+          }
+          tertiaryText={(record: DetailedProduct) => record.category.name}
+          linkType="show"
+        />
+      ) : (
         <Datagrid>
-            <TextField source="id" />
-            <BooleanField source="is_archived" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-            <TextField source="deleted_at" />
-            <TextField source="name" />
-            <TextField source="code" />
-            <TextField source="sku" />
-            <NumberField source="unit_cost" />
-            <ReferenceField source="measure_unit_id" reference="measure_units" />
-            <ReferenceField source="category_id" reference="categories" />
+          <TextField source="name" />
+          <TextField source="code" />
+          <NumberField source="unit_cost" />
+          <ReferenceField source="measure_unit_id" reference="measure_units" />
+          <ReferenceField source="category_id" reference="product_categories" />
+            <EditButton />
         </Datagrid>
+      )}
     </List>
-);
+  );
+};

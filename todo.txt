@@ -2,15 +2,15 @@ BUGS:
 * Redirection of related tables inside a ShowView is not working
 
 Inventory Module:
-1. Crear la vista de lista con sus filtros y funcionalidad de archivar 
-2. Crear vista Detail 
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
+2. Crear vista Detail [DONE]
 2.1 Crear formularios y vista de creación
 2.2 Crear formularios y vista de edición
 
 CyclicCount Module:
-1. Crear la vista de lista con sus filtros y funcionalidad de archivar 
-2. Crear vista Detail
-2.1 Crear formularios y vista de creación
+1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
+2. Crear vista Detail [DONE]
+2.1 Crear formularios y vista de creación 
 2.2 Crear formularios y vista de edición
 ===
 3. Posibilidad de crear productos en el mismo conteo y buscar tmb

@@ -7,6 +7,11 @@ export interface ReadMeasureUnit extends ReadSchema {
     parent_id?: string;  // UUID as string
 }
 
+
+export interface DetailedMeasureUnit extends ReadMeasureUnit {
+    parent?: ReadMeasureUnit;  // UUID as string
+}
+
 export interface CreateMeasureUnit extends CreateSchema {
     name: string;
     conversion_formula?: string;

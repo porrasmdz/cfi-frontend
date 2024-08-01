@@ -1,19 +1,115 @@
-import { BooleanField, DateField, NumberField, ReferenceField, Show, SimpleShowLayout, TextField } from 'react-admin';
-
+import {
+  BooleanField,
+  DateField,
+  Labeled,
+  NumberField,
+  ReferenceField,
+  Show,
+  SimpleShowLayout,
+  TextField,
+} from "react-admin";
+import {
+  List,
+  ListSubheader,
+  Divider,
+  ListItem,
+  ListItemText,
+  Stack,
+  Box,
+} from "@mui/material";
+import { styles } from "../../commons/themes";
 export const ProductShow = () => (
-    <Show>
-        <SimpleShowLayout>
-            <TextField source="id" />
-            <BooleanField source="is_archived" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-            <TextField source="deleted_at" />
-            <TextField source="name" />
-            <TextField source="code" />
-            <TextField source="sku" />
-            <NumberField source="unit_cost" />
-            <ReferenceField source="measure_unit_id" reference="measure_units" />
-            <ReferenceField source="category_id" reference="categories" />
-        </SimpleShowLayout>
-    </Show>
+  <Show>
+    <SimpleShowLayout>
+      <List sx={{ width: "100%" }}>
+        <ListSubheader>Id</ListSubheader>
+        <Divider />
+        <ListItem>
+          <ListItemText>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+              sx={styles.stackDefaults.sx}
+            >
+              <TextField source="id" />
+            </Stack>
+          </ListItemText>
+        </ListItem>
+        <ListSubheader>Datos</ListSubheader>
+        <Divider />
+        <ListItem>
+          <ListItemText sx={{ paddingTop: "0.6rem" }}>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+            >
+              <Labeled sx={{ width: "25%" }}>
+                <TextField source="name" />
+              </Labeled>
+
+              <Labeled sx={{ width: "25%" }}>
+                <TextField source="code" />
+              </Labeled>
+              <Labeled sx={{ width: "25%" }}>
+                <TextField source="sku" />
+              </Labeled>
+            </Stack>
+          </ListItemText>
+        </ListItem>
+
+        <ListItem>
+          <ListItemText>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+              sx={{ paddingY: "0.6rem" }}
+            >
+              <Labeled sx={{ width: "25%" }}>
+                <NumberField source="unit_cost" />
+              </Labeled>
+              <Labeled sx={{ width: "25%" }}>
+                <ReferenceField
+                  source="measure_unit_id"
+                  reference="measure_units"
+                />
+              </Labeled>
+              <Labeled sx={{ width: "25%" }}>
+                <ReferenceField source="category_id" reference="product_categories" />
+              </Labeled>
+            </Stack>
+          </ListItemText>
+        </ListItem>
+
+        <ListSubheader>Edición</ListSubheader>
+        <Divider />
+        <ListItem>
+          <ListItemText>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+              sx={styles.stackDefaults.sx}
+            >
+              <Labeled sx={{ width: "25%" }}>
+                <DateField source="updated_at" />
+              </Labeled>
+              <Labeled sx={{ width: "25%" }}>
+                <DateField source="created_at" />
+              </Labeled>
+
+              <Labeled sx={{ width: "25%" }}>
+                <Box />
+              </Labeled>
+              <Labeled sx={{ width: "25%" }}>
+                <Box />
+              </Labeled>
+            </Stack>
+          </ListItemText>
+        </ListItem>
+      </List>
+    </SimpleShowLayout>
+  </Show>
 );

@@ -11,6 +11,7 @@ import {
   TextInput,
 } from "react-admin";
 import { useMediaQuery, Theme } from "@mui/system";
+import { DetailedCompany } from "../interfaces/ICompany";
 
 const companyFilters = [
   <TextInput source="name" label="Search" alwaysOn />,
@@ -28,9 +29,9 @@ export const CompaniesList = () => {
     <List filters={companyFilters}>
       {isSmall ? (
         <SimpleList
-          primaryText={(record) => record.name}
-          secondaryText={(record) => record.ruc}
-          tertiaryText={(record) => record.email}
+          primaryText={(record: DetailedCompany) => record.name}
+          secondaryText={(record: DetailedCompany) => record.ruc}
+          tertiaryText={(record: DetailedCompany) => record.email}
           linkType="show"
         />
       ) : (

@@ -42,6 +42,7 @@ const customProvider = {
   },
 
   getMany: async (resource: any, params: any) => {
+
     const filter = convertRAFilters({ ids: params.ids });
     const url = `${apiUrl}/${resource}?filters=${JSON.stringify(filter)}`;
     const { json } = await httpClient(url, { signal: params.signal });
@@ -49,7 +50,7 @@ const customProvider = {
   },
 
   getManyReference: async (resource: any, params: any) => {
-    
+   
     const query = convertPaginationToApiFilters(params);
     query.filters[params.target] = {"value":params.id, "match_mode":"eq"}
     const url =
@@ -59,8 +60,12 @@ const customProvider = {
       `&limit=${query.limit}` +
       `&filters=${JSON.stringify(query.filters)}`;
     const { json, headers } = await httpClient(url, { signal: params.signal });
+    
+    const sort_by:string = params.sort.field;
+    const sort_order:string = params.sort.order;
+    const sorted_results = ensureSubsortInResourceList(sort_by, sort_order, json.results)
     return {
-      data: json.results,
+      data: sorted_results,
       total: parseInt(
         headers.get("content-range")?.split("/").pop() || "0",
         10

@@ -104,6 +104,9 @@ export const ContactsShow = () => (
               <Labeled sx={{ width: "25%" }}>
                 <DateField source="created_at" />
               </Labeled>
+              
+              <Labeled sx={{ width: "25%" }}><Box/></Labeled>
+              <Labeled sx={{ width: "25%" }}><Box/></Labeled>
             </Stack>
           </ListItemText>
         </ListItem>

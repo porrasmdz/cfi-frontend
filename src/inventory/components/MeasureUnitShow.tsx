@@ -1,7 +1,7 @@
 import {
   DateField,
   Labeled,
-  NumberField,
+  TabbedShowLayout,
   ReferenceField,
   Show,
   SimpleShowLayout,
@@ -112,5 +112,13 @@ export const MeasureUnitShow = () => (
         </ListItem>
       </List>
     </SimpleShowLayout>
+    <TabbedShowLayout>
+      <TabbedShowLayout.Tab label="U. de Medida Relacionadas">
+        <Stack></Stack>
+      </TabbedShowLayout.Tab>
+      <TabbedShowLayout.Tab label="Bodegas que lo Usan">
+        <Stack> </Stack>
+      </TabbedShowLayout.Tab>
+    </TabbedShowLayout>
   </Show>
 );

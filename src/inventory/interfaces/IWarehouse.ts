@@ -1,4 +1,5 @@
 import { ReadSchema, CreateSchema, UpdateSchema } from "../../commons/interfaces/IBase";
+import { ReadCompany } from "../../companies/interfaces/ICompany";
 import { ReadWarehouseType } from "./IWarehouseType";
 
 export interface ReadWarehouse extends ReadSchema {
@@ -13,6 +14,8 @@ export interface ReadWarehouse extends ReadSchema {
 }
 
 export interface DetailedWarehouse extends ReadWarehouse {
+    company: ReadCompany,
+    warehouse_type: ReadWarehouseType,
     wh_locations?: ReadWarehouseType[];
 }
 

@@ -1,14 +1,30 @@
-import { BooleanField, Datagrid, DateField, List, TextField } from 'react-admin';
-
-export const WHLocationTypesList = () => (
-    <List>
+import {
+    SearchInput,
+    Datagrid,
+    SimpleList,
+    List,
+    EditButton,
+    TextField,
+  } from "react-admin";
+  import { useMediaQuery, Theme } from "@mui/system";
+import { ReadWHLocationType } from "../interfaces/IWHLocationType";
+  
+  const whLocationTypeFilters = [
+    <SearchInput placeholder="Nombre" source="name" alwaysOn />,
+  ];
+  export const WHLocationTypesList = () => {
+    const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+    return (
+      <List filters={whLocationTypeFilters}>
+        {isSmall ? (
+          <SimpleList
+            primaryText={(record: ReadWHLocationType) => record.name}
+            linkType="show"
+          />
+        ) : (
         <Datagrid>
-            <TextField source="id" />
-            <BooleanField source="is_archived" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-            <TextField source="deleted_at" />
             <TextField source="name" />
-        </Datagrid>
-    </List>
-);
+            <EditButton />
+        </Datagrid>)}
+    </List>)
+  };

@@ -3,6 +3,7 @@ import {
   Datagrid,
   List,
   ReferenceField,
+  EditButton,
   SearchInput,
   TextField,
 } from "react-admin";
@@ -31,6 +32,7 @@ export const MeasureUnitList = () => {
           <TextField source="name" />
           <TextField source="conversion_formula" />
           <ReferenceField source="parent_id" reference="parents" />
+          <EditButton />
         </Datagrid>
       )}
     </List>

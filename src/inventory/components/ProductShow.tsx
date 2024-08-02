@@ -1,10 +1,10 @@
 import {
-  BooleanField,
   DateField,
   Labeled,
   NumberField,
   ReferenceField,
   Show,
+  TabbedShowLayout,
   SimpleShowLayout,
   TextField,
 } from "react-admin";
@@ -111,5 +111,14 @@ export const ProductShow = () => (
         </ListItem>
       </List>
     </SimpleShowLayout>
+    
+    <TabbedShowLayout>
+      <TabbedShowLayout.Tab label="Veces que se Contó">
+        <Stack></Stack>
+      </TabbedShowLayout.Tab>
+      <TabbedShowLayout.Tab label="Ubicaciones Registradas">
+        <Stack> </Stack>
+      </TabbedShowLayout.Tab>
+    </TabbedShowLayout>
   </Show>
 );

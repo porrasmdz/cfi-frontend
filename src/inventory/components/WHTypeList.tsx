@@ -1,15 +1,29 @@
-import { BooleanField, Datagrid, DateField, List, TextField } from 'react-admin';
+import { SimpleList, Datagrid,SearchInput, List, TextField, EditButton } from "react-admin";
 
-export const WHTypeList = () => (
-    <List>
+import { useMediaQuery, Theme } from "@mui/system";
+import { DetailedWarehouseType } from "../interfaces/IWarehouseType";
+const whTypeFilters = [
+    <SearchInput placeholder="Nombre" source="name" alwaysOn />,
+    
+  ];
+export const WHTypeList = () => {
+  const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+
+  return (
+    <List filters={whTypeFilters}>
+      {isSmall ? (
+        <SimpleList
+          primaryText={(record: DetailedWarehouseType) => record.name}
+          secondaryText={(record: DetailedWarehouseType) => record.description}
+          linkType="show"
+        />
+      ) : (
         <Datagrid>
-            <TextField source="id" />
-            <BooleanField source="is_archived" />
-            <DateField source="created_at" />
-            <DateField source="updated_at" />
-            <TextField source="deleted_at" />
-            <TextField source="name" />
-            <TextField source="description" />
+          <TextField source="name" />
+          <TextField source="description" />
+          <EditButton />
         </Datagrid>
+      )}
     </List>
-);
+  );
+};

@@ -22,103 +22,65 @@ import {
   ListItemText,
   ListSubheader,
 } from "@mui/material";
+import BaseShow from "../../commons/components/BaseShow";
 import { styles } from "../../commons/themes";
 
 export const CompaniesShow = () => (
-  <Show>
-    <SimpleShowLayout>
-      <List sx={{ width: "100%" }}>
-        <ListSubheader>Id</ListSubheader>
-        <Divider />
-        <ListItem>
-          <ListItemText>
-            <Stack
-              direction={"row"}
-              justifyContent={styles.stackDefaults.justifyContent}
-              spacing={styles.stackDefaults.spacing}
-              sx={styles.stackDefaults.sx}
-            >
-              <TextField source="id" />
-            </Stack>
-          </ListItemText>
-        </ListItem>
-        <ListSubheader>Datos</ListSubheader>
-        <Divider />
-        <ListItem>
-          <ListItemText sx={{ paddingTop: "0.6rem" }}>
-            <Stack
-              direction={"row"}
-              justifyContent={styles.stackDefaults.justifyContent}
-              spacing={styles.stackDefaults.spacing}
-            >
-              <Labeled sx={{ width: "25%" }}>
-                <TextField source="name" />
-              </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <TextField source="codename" />
-              </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <TextField source="phone_number" />
-              </Labeled>
+  // sx={{width: "50%", alignSelf: "center", marginY: "1.2rem"}}
+  <Show >
+    <BaseShow>
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+          >
+            <Labeled sx={{ width: "25%" }}>
+              <TextField source="name" />
+            </Labeled>
+            <Labeled sx={{ width: "25%" }}>
+              <TextField source="codename" />
+            </Labeled>
+            <Labeled sx={{ width: "25%" }}>
+              <TextField source="phone_number" />
+            </Labeled>
 
-              <Labeled sx={{ width: "25%" }}>
-                <TextField source="cellphone_number" />
-              </Labeled>
-            </Stack>
-          </ListItemText>
-        </ListItem>
+            <Labeled sx={{ width: "25%" }}>
+              <TextField source="cellphone_number" />
+            </Labeled>
+          </Stack>
+        </ListItemText>
+      </ListItem>
 
-        <ListItem>
-          <ListItemText>
-            <Stack
-              direction={"row"}
-              justifyContent={styles.stackDefaults.justifyContent}
-              spacing={styles.stackDefaults.spacing}
-              sx={{ paddingBottom: "0.6rem" }}
-            >
-              <Labeled sx={{ width: "25%" }}>
-                <EmailField source="email" />
-              </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <TextField source="ruc" />
-              </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <DateField source="foundation_date" />
-              </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <ReferenceField
-                  source="corporate_group_id"
-                  reference="corporative_groups"
-                />
-              </Labeled>
-            </Stack>
-          </ListItemText>
-        </ListItem>
+      <ListItem>
+        <ListItemText>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+            sx={{ paddingBottom: "0.6rem" }}
+          >
+            <Labeled sx={{ width: "25%" }}>
+              <EmailField source="email" />
+            </Labeled>
+            <Labeled sx={{ width: "25%" }}>
+              <TextField source="ruc" />
+            </Labeled>
+            <Labeled sx={{ width: "25%" }}>
+              <DateField source="foundation_date" />
+            </Labeled>
+            <Labeled sx={{ width: "25%" }}>
+              <ReferenceField
+                source="corporate_group_id"
+                reference="corporative_groups"
+              />
+            </Labeled>
+          </Stack>
+        </ListItemText>
+      </ListItem>
+    </BaseShow>
 
-        <ListSubheader>Edición</ListSubheader>
-        <Divider />
-        <ListItem>
-          <ListItemText>
-            <Stack
-              direction={"row"}
-              justifyContent={styles.stackDefaults.justifyContent}
-              spacing={styles.stackDefaults.spacing}
-              sx={styles.stackDefaults.sx}
-            >
-              <Labeled sx={{ width: "25%" }}>
-                <DateField source="updated_at" />
-              </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <DateField source="created_at" />
-              </Labeled>
-              
-              <Labeled sx={{ width: "25%" }}><Box/></Labeled>
-              <Labeled sx={{ width: "25%" }}><Box/></Labeled>
-            </Stack>
-          </ListItemText>
-        </ListItem>
-      </List>
-    </SimpleShowLayout>
     <TabbedShowLayout>
       <TabbedShowLayout.Tab label="Contactos">
         <ReferenceManyField reference="contacts" target="company_id">

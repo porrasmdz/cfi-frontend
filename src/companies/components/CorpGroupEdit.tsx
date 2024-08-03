@@ -1,21 +1,17 @@
 import {
-  ArrayInput,
-  BooleanInput,
-  DateInput,
   Edit,
   SimpleForm,
-  SimpleFormIterator,
   TextInput,
+  required
 } from "react-admin";
 
 export const CorpGroupEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput source="name" />
-      <TextInput source="description" />
-      <ArrayInput source="companies">
+      <TextInput source="name" validate={[required()]}/>
+      <TextInput source="description" multiline/>
+      {/* <ArrayInput source="companies">
         <SimpleFormIterator>
-          <DateInput source="updated_at" />
           <TextInput source="name" />
           <TextInput source="codename" />
           <TextInput source="phone_number" />
@@ -24,7 +20,7 @@ export const CorpGroupEdit = () => (
           <TextInput source="ruc" />
           <DateInput source="foundation_date" />
         </SimpleFormIterator>
-      </ArrayInput>
+      </ArrayInput> */}
     </SimpleForm>
   </Edit>
 );

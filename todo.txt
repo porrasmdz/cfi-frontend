@@ -27,11 +27,13 @@ Companies Module:
 
 Commons Module:
 1. Crear el layout de la pagina con navbar y sidebar local derecho para ver activity_registry en detail (responsive)
-2. Crear Menús superiores
+2. Crear Menús superiores [Done]
+2.2. Hacerlos menus superiores Nested
 3. Poblar Notebooks de Inventory
 3.1 Poblar Notebooks de CyclicCount
 3.2 Poblar Notebooks de Companies
 4. Crear Modales Simples, Con Acciones, Con aceptar, con tipo
 5. Verificar Responsiveness
-6. Añadir atajos y autoguardado en recarga de página (localStorage and save?)
+6. Añadir atajos y autoguardado en recarga de página (localStorage and save?). 
+    Asimismo cancelar salir si no hay guardado
 7. Hacer que los input de busqueda tengan cooldown para hacer el query (no quiero que haga query insta pq parpadea)

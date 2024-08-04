@@ -5,12 +5,12 @@ import { Link } from "react-admin";
 
 const linkStyle = {
   width: "100%",
-  margin:0,
-  bgColor: 'red',
+  margin: 0,
+  bgColor: "red",
   color: "inherit",
   textDecoration: "none",
   paddingX: "1.6rem",
-  paddingY: ".2rem"
+  paddingY: ".2rem",
 };
 function CFINavbarMenu() {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("md"));
@@ -53,7 +53,14 @@ function CFINavbarMenu() {
 
           <NestedMenuItemLink
             to="admin"
-            multiTarget={["warehouse_types", "whlocation_types", "product_categories", "measure_units"]}
+            multiTarget={[
+              "warehouse_types",
+              "whlocation_types",
+              "product_categories",
+              "measure_units",
+              "activity_registries",
+              "count_registries"
+            ]}
             primaryText="Admin"
           >
             <Link sx={linkStyle} to={"warehouse_types"}>
@@ -67,6 +74,12 @@ function CFINavbarMenu() {
             </Link>
             <Link sx={linkStyle} to={"measure_units"}>
               Unidades de Medida
+            </Link>
+            <Link sx={linkStyle} to={"count_registries"}>
+              Registros de Conteo
+            </Link>
+            <Link sx={linkStyle} to={"activity_registries"}>
+              Registros de Actividad
             </Link>
           </NestedMenuItemLink>
         </Stack>

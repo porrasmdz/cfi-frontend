@@ -22,8 +22,8 @@ CyclicCount Module:
 Companies Module:
 1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
 2. Crear vista Detail [DONE]
-2.1 Crear formularios y vista de creación
-2.2 Crear formularios y vista de edición
+2.1 Crear formularios y vista de creación [DONE]
+2.2 Crear formularios y vista de edición [DONE]
 
 Commons Module:
 1. Crear el layout de la pagina con navbar y sidebar local derecho para ver activity_registry en detail (responsive)

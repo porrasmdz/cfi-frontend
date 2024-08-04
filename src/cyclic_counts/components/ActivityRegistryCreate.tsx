@@ -1,17 +1,49 @@
-import { BooleanInput, DateInput, Edit, ReferenceInput, SimpleForm, TextInput } from 'react-admin';
-
-export const ActivityRegistryCreate = () => (
-    <Edit>
-        <SimpleForm>
-            <TextInput source="id" />
-            <BooleanInput source="is_archived" />
-            <DateInput source="created_at" />
-            <DateInput source="updated_at" />
-            <TextInput source="deleted_at" />
-            <TextInput source="detail" />
-            <TextInput source="commentary" />
-            <TextInput source="user" />
-            <ReferenceInput source="count_registry_id" reference="count_registries" />
-        </SimpleForm>
-    </Edit>
-);
+import {
+    AutocompleteInput,
+    DateInput,
+    Create,
+    SimpleForm,
+    ReferenceInput,
+    required,
+    TextInput,
+  } from "react-admin";
+  import BaseEdit from "../../commons/components/BaseEdit";
+  import { ListItem, ListItemText, Stack, Box } from "@mui/material";
+  import { styles } from "../../commons/themes";
+  export const ActivityRegistryCreate = () => (
+    <Create>
+      <BaseEdit>
+        <ListItem>
+          <ListItemText sx={{ paddingTop: "0.6rem" }}>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+              alignItems={"center"}
+            >
+              <TextInput
+                sx={{ width: "25%" }}
+                source="detail"
+                validate={required()}
+              />
+              <TextInput sx={{ width: "25%" }} source="commentary" />
+              <TextInput
+                sx={{ width: "25%" }}
+                source="user"
+                validate={required()}
+              />
+              <Box sx={{ width: "25%" }}>
+                <ReferenceInput
+                  source="count_registry_id"
+                  reference="count_registries"
+                >
+                  <AutocompleteInput />
+                </ReferenceInput>
+              </Box>
+            </Stack>
+          </ListItemText>
+        </ListItem>
+      </BaseEdit>
+    </Create>
+  );
+  

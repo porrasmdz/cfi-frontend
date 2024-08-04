@@ -10,7 +10,7 @@ import {
   Theme,
 } from "@mui/material";
 import Logo from "./Logo";
-import CFIMenu from "./CFIMenu";
+import CFINavbarMenu from "./CFINavbarMenu";
 import { useLocales } from "ra-core";
 import {
   SidebarToggleButton,
@@ -51,7 +51,7 @@ export const CFIAppBar: FC<AppBarProps> = memo((props) => {
         >
           <SidebarToggleButton className={AppBarClasses.menuButton} />
           <Logo />
-          <CFIMenu/>
+          <CFINavbarMenu/>
           <Box flex={1} />
 
           {children}
@@ -86,17 +86,6 @@ const defaultToolbarElement = <DefaultToolbar />;
 
 const DefaultUserMenu = <UserMenu />;
 
-// export interface AppBarProps extends MuiAppBarProps {
-/**
- * This prop is injected by Layout. You should not use it directly unless
- * you are using a custom layout.
- * If you are using the default layout, use `<Layout appBarAlwaysOn>` instead.
- */
-//   alwaysOn?: boolean;
-//   container?: React.ElementType<any>;
-//   toolbar?: JSX.Element;
-//   userMenu?: JSX.Element | boolean;
-// }
 
 const PREFIX = "RaAppBar";
 

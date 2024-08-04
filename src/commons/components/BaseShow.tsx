@@ -1,4 +1,3 @@
-import { Children } from "react";
 import { DateField, Labeled, SimpleShowLayout, TextField } from "react-admin";
 import {
   List,
@@ -7,7 +6,8 @@ import {
   Stack,
   ListSubheader,
   ListItemText,
-  Box
+  Typography,
+  Box,
 } from "@mui/material";
 import { styles } from "../themes";
 
@@ -19,7 +19,11 @@ export const BaseShow = ({ children }: Props) => {
   return (
     <SimpleShowLayout>
       <List sx={styles.showListSx}>
-        <ListSubheader>Id</ListSubheader>
+        <ListSubheader>
+          <Typography variant="h6" paddingY={"0.8rem"}>
+            Id
+          </Typography>
+        </ListSubheader>
         <Divider />
         <ListItem>
           <ListItemText>
@@ -33,10 +37,18 @@ export const BaseShow = ({ children }: Props) => {
             </Stack>
           </ListItemText>
         </ListItem>
-        <ListSubheader>Datos</ListSubheader>
+        <ListSubheader>
+          <Typography variant="h6" paddingY={"0.8rem"}>
+            Datos
+          </Typography>
+        </ListSubheader>
         <Divider />
         {children}
-        <ListSubheader>Edición</ListSubheader>
+        <ListSubheader>
+          <Typography variant="h6" paddingY={"0.8rem"}>
+            Edición
+          </Typography>
+        </ListSubheader>
         <Divider />
         <ListItem>
           <ListItemText>
@@ -53,8 +65,8 @@ export const BaseShow = ({ children }: Props) => {
                 <DateField source="created_at" />
               </Labeled>
 
-              <Box sx={{ width: "25%" }}/>
-              <Box sx={{ width: "25%" }}/>
+              <Box sx={{ width: "25%" }} />
+              <Box sx={{ width: "25%" }} />
             </Stack>
           </ListItemText>
         </ListItem>

@@ -1,10 +1,17 @@
-import { DateInput, Edit, ReferenceInput, TextInput } from "react-admin";
+import {
+  AutocompleteInput,
+  DateInput,
+  Edit,
+  ReferenceInput,
+  TextInput,
+  required,
+} from "react-admin";
 import { ListItemText, Stack, ListItem, Box } from "@mui/material";
 import { styles } from "../../commons/themes";
 import BaseEdit from "../../commons/components/BaseEdit";
 export const CompaniesEdit = () => (
   // sx={{width: "60%", alignSelf:"center"}}
-  <Edit >
+  <Edit>
     <BaseEdit>
       <ListItem>
         <ListItemText sx={{ paddingTop: "0.6rem" }}>
@@ -13,7 +20,11 @@ export const CompaniesEdit = () => (
             justifyContent={styles.stackDefaults.justifyContent}
             spacing={styles.stackDefaults.spacing}
           >
-            <TextInput sx={{ width: "25%" }} source="name" />
+            <TextInput
+              sx={{ width: "25%" }}
+              source="name"
+              validate={required()}
+            />
             <TextInput sx={{ width: "25%" }} source="codename" />
             <TextInput sx={{ width: "25%" }} source="phone_number" />
 
@@ -30,14 +41,24 @@ export const CompaniesEdit = () => (
             spacing={styles.stackDefaults.spacing}
             alignItems={"center"}
           >
-            <TextInput sx={{ width: "25%" }} source="email" />
-            <TextInput sx={{ width: "25%" }} source="ruc" />
+            <TextInput
+              sx={{ width: "25%" }}
+              source="email"
+              validate={required()}
+            />
+            <TextInput
+              sx={{ width: "25%" }}
+              source="ruc"
+              validate={required()}
+            />
             <DateInput sx={{ width: "25%" }} source="foundation_date" />
-            <Box width={"25%"} position={'relative'} top={-2} >
+            <Box width={"25%"} position={"relative"} top={-2}>
               <ReferenceInput
                 source="corporate_group_id"
                 reference="corporative_groups"
-              />
+              >
+                <AutocompleteInput validate={required()} />
+              </ReferenceInput>
             </Box>
           </Stack>
         </ListItemText>

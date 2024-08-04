@@ -1,13 +1,12 @@
-import { Children } from "react";
-import { DateField, Labeled, SimpleForm, SimpleShowLayout, TextField } from "react-admin";
+//@ts-nocheck
+import {
+  SimpleForm,
+} from "react-admin";
 import {
   List,
   Divider,
-  ListItem,
-  Stack,
   ListSubheader,
-  ListItemText,
-  Box
+  Typography
 } from "@mui/material";
 import { styles } from "../themes";
 
@@ -16,13 +15,18 @@ type Props = {
 };
 
 export const BaseEdit = ({ children }: Props) => {
+  
   return (
     <SimpleForm>
       <List sx={styles.showListSx}>
-        <ListSubheader>Datos</ListSubheader>
+        <ListSubheader>
+          <Typography variant="h6" paddingY={"0.8rem"}>
+          Datos
+          </Typography>
+          
+          </ListSubheader>
         <Divider />
         {children}
-        
       </List>
     </SimpleForm>
   );

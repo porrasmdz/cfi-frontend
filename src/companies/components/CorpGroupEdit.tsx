@@ -1,26 +1,37 @@
-import {
-  Edit,
-  SimpleForm,
-  TextInput,
-  required
-} from "react-admin";
-
+import { Edit, TextInput, required } from "react-admin";
+import { ListItem, ListItemText, Stack } from "@mui/material";
+import BaseEdit from "../../commons/components/BaseEdit";
+import { styles } from "../../commons/themes";
 export const CorpGroupEdit = () => (
   <Edit>
-    <SimpleForm>
-      <TextInput source="name" validate={[required()]}/>
-      <TextInput source="description" multiline/>
-      {/* <ArrayInput source="companies">
-        <SimpleFormIterator>
-          <TextInput source="name" />
-          <TextInput source="codename" />
-          <TextInput source="phone_number" />
-          <TextInput source="cellphone_number" />
-          <TextInput source="email" />
-          <TextInput source="ruc" />
-          <DateInput source="foundation_date" />
-        </SimpleFormIterator>
-      </ArrayInput> */}
-    </SimpleForm>
+    <BaseEdit>
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+          >
+            <TextInput
+              sx={{ width: "25%" }}
+              source="name"
+              validate={[required()]}
+            />
+          </Stack>
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+          >
+          
+            <TextInput sx={{ width: "25%" }} source="description" multiline />
+          </Stack>
+        </ListItemText>
+      </ListItem>
+    </BaseEdit>
   </Edit>
 );

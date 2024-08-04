@@ -108,8 +108,9 @@ export const NestedMenuItemLink = forwardRef<any, NestedMenuItemLinkProps>(
               //@ts-ignore
               children.map((el) => (
                 <MenuItem
-                  sx={{ bgColor: "green" }}
-                  onClick={handleNestedMenuClose}
+                disableGutters  
+                onClick={handleNestedMenuClose}
+                  // LinkComponent={Link}
                 >
                   {el}
                 </MenuItem>
@@ -163,10 +164,6 @@ export type NestedMenuItemLinkProps = Omit<
 > & {
     leftIcon?: ReactElement;
     primaryText?: ReactNode;
-    /**
-     * @deprecated
-     */
-    sidebarIsOpen?: boolean;
     tooltipProps?: TooltipProps;
     multiTarget?: string[];
 };

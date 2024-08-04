@@ -1,6 +1,8 @@
+import { Link } from "react-admin";
 import { Typography, Stack } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { AppBarClasses } from "react-admin";
+
 function Logo() {
   return (
     <Stack
@@ -11,17 +13,27 @@ function Logo() {
         color: (theme) => theme.palette.primary.main,
       }}
     >
-      <DashboardIcon />
-      <Typography
-        paddingRight={"1.2rem"}
-        className={AppBarClasses.title}
-        maxWidth={"250px"}
-        fontWeight={500}
-        variant="h6"
-        
+      <Link
+        to="/"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+          width: "100%",
+          height: "100%",
+        }}
       >
-        CFIv2
-      </Typography>
+        <DashboardIcon />
+        <Typography
+          paddingRight={"1.2rem"}
+          className={AppBarClasses.title}
+          maxWidth={"250px"}
+          fontWeight={500}
+          variant="h6"
+        >
+          CFIv2
+        </Typography>
+      </Link>
     </Stack>
   );
 }

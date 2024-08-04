@@ -1,27 +1,75 @@
-import { ArrayInput, BooleanInput, DateInput, Create, ReferenceInput, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
+import {
+  AutocompleteInput,
+  Create,
+  ReferenceInput,
+  required,
+  TextInput,
+  SimpleForm,
+} from "react-admin";
+import BaseEdit from "../../commons/components/BaseEdit";
+import { ListItem, ListItemText, Stack, Box } from "@mui/material";
+import { styles } from "../../commons/themes";
 
 export const WarehouseCreate = () => (
-    <Create>
-        <SimpleForm>
-            <TextInput source="id" />
-            <BooleanInput source="is_archived" />
-            <DateInput source="created_at" />
-            <DateInput source="updated_at" />
-            <TextInput source="deleted_at" />
-            <TextInput source="name" />
-            <TextInput source="country" />
-            <TextInput source="state" />
-            <TextInput source="city" />
-            <TextInput source="address" />
-            <ReferenceInput source="company_id" reference="companies" />
-            <ReferenceInput source="warehouse_type_id" reference="warehouse_types" />
-            <ArrayInput source="wh_locations"><SimpleFormIterator><TextInput source="id" />
-<BooleanInput source="is_archived" />
-<DateInput source="created_at" />
-<DateInput source="updated_at" />
-<TextInput source="deleted_at" />
-<TextInput source="name" />
-<TextInput source="description" /></SimpleFormIterator></ArrayInput>
-        </SimpleForm>
-    </Create>
+  <Create>
+    <BaseEdit>
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+            alignItems={"center"}
+          >
+            <TextInput
+              sx={{ width: "25%" }}
+              source="name"
+              validate={required()}
+            />
+
+            <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+              <ReferenceInput
+                source="warehouse_type_id"
+                reference="warehouse_types"
+              >
+                <AutocompleteInput validate={required()} />
+              </ReferenceInput>
+            </Box>
+            <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+              <ReferenceInput source="company_id" reference="companies">
+                <AutocompleteInput validate={required()} />
+              </ReferenceInput>
+            </Box>
+          </Stack>
+        </ListItemText>
+      </ListItem>
+
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+            alignItems={"center"}
+          >
+            <TextInput sx={{ width: "25%" }} source="country" />
+            <TextInput sx={{ width: "25%" }} source="state" />
+          </Stack>
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+            alignItems={"center"}
+          >
+            <TextInput sx={{ width: "25%" }} source="city" />
+            <TextInput sx={{ width: "25%" }} source="address" />
+          </Stack>
+        </ListItemText>
+      </ListItem>
+    </BaseEdit>
+  </Create>
 );

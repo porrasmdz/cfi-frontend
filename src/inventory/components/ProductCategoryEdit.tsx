@@ -1,15 +1,27 @@
-import { BooleanInput, DateInput, Edit, SimpleForm, TextInput } from 'react-admin';
-
+import { Edit, required, TextInput } from "react-admin";
+import BaseEdit from "../../commons/components/BaseEdit";
+import { ListItem, ListItemText, Stack } from "@mui/material";
+import { styles } from "../../commons/themes";
 export const ProductCategoryEdit = () => (
-    <Edit>
-        <SimpleForm>
-            <TextInput source="id" />
-            <BooleanInput source="is_archived" />
-            <DateInput source="created_at" />
-            <DateInput source="updated_at" />
-            <TextInput source="deleted_at" />
-            <TextInput source="name" />
-            <TextInput source="short_codename" />
-        </SimpleForm>
-    </Edit>
+  <Edit>
+    <BaseEdit>
+      <ListItem>
+        <ListItemText sx={{ paddingTop: "0.6rem" }}>
+          <Stack
+            direction={"row"}
+            justifyContent={styles.stackDefaults.justifyContent}
+            spacing={styles.stackDefaults.spacing}
+            alignItems={"center"}
+          >
+            <TextInput
+              sx={{ width: "25%" }}
+              source="name"
+              validate={required()}
+            />
+            <TextInput sx={{ width: "25%" }} source="short_codename" />
+          </Stack>
+        </ListItemText>
+      </ListItem>
+    </BaseEdit>
+  </Edit>
 );

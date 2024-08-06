@@ -5,6 +5,8 @@ import {
   ReferenceInput,
   required,
   TextInput,
+  ReferenceArrayInput,
+  AutocompleteArrayInput
 } from "react-admin";
 import BaseEdit from "../../commons/components/BaseEdit";
 import { ListItem, ListItemText, Stack, Box } from "@mui/material";
@@ -22,6 +24,8 @@ export const CyclicCountEdit = () => (
             <TextInput sx={{ width: "25%" }} source="name" validate={required()} />
             <TextInput sx={{ width: "25%" }} source="count_type" validate={required()} />
             <TextInput sx={{ width: "25%" }} source="status" validate={required()} />
+            
+            
           </Stack>
         </ListItemText>
       </ListItem>
@@ -35,11 +39,12 @@ export const CyclicCountEdit = () => (
           >
             <DateInput sx={{ width: "25%" }} source="count_date_start" />
             <DateInput sx={{ width: "25%" }} source="count_date_finish" />
-            <Box sx={{ width: "25%" }}>
-              <ReferenceInput source="parent_id" reference="cyclic_counts">
-                <AutocompleteInput />
-              </ReferenceInput>
-            </Box>
+            <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+                <ReferenceArrayInput source="warehouse_ids" reference="warehouses">
+                  <AutocompleteArrayInput 
+                validate={required()}/>
+                </ReferenceArrayInput>
+              </Box>
           </Stack>
         </ListItemText>
       </ListItem>

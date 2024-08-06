@@ -106,9 +106,10 @@ export const NestedMenuItemLink = forwardRef<any, NestedMenuItemLinkProps>(
           >
             {children.constructor.name == "Array" ? (
               //@ts-ignore
-              children.map((el) => (
+              children.map((el,index) => (
                 <MenuItem
-                disableGutters  
+                disableGutters 
+                key={`${primaryText} - ${index}`}
                 onClick={handleNestedMenuClose}
                   // LinkComponent={Link}
                 >

@@ -1,18 +1,29 @@
 import {
-    AutocompleteInput,
-    Create,
-    ReferenceInput,
-    required,
-    TextInput,
-    NumberInput,
-    SimpleForm,
-  } from "react-admin";
-  import BaseEdit from "../../commons/components/BaseEdit";
-  import { ListItem, ListItemText, Stack, Box } from "@mui/material";
-  import { styles } from "../../commons/themes";
-  
-  export const ProductCreate = () => (
-    <Create>
+  AutocompleteInput,
+  Create,
+  ReferenceInput,
+  required,
+  TextInput,
+  NumberInput,
+  ReferenceArrayInput,
+  AutocompleteArrayInput,
+  maxLength,
+} from "react-admin";
+import BaseEdit from "../../commons/components/BaseEdit";
+import {
+  ListItem,
+  ListItemText,
+  Stack,
+  Box,
+  ListSubheader,
+  Typography,
+  Divider,
+} from "@mui/material";
+import { styles } from "../../commons/themes";
+import { ProductAlterContext } from "./ProductAlterContext";
+export const ProductCreate = () => (
+  <Create>
+    <ProductAlterContext>
       <BaseEdit>
         <ListItem>
           <ListItemText sx={{ paddingTop: "0.6rem" }}>
@@ -28,9 +39,11 @@ import {
                 validate={required()}
               />
               <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
-                <ReferenceInput source="category_id" reference="product_categories">
-                  <AutocompleteInput 
-                validate={required()}/>
+                <ReferenceInput
+                  source="category_id"
+                  reference="product_categories"
+                >
+                  <AutocompleteInput validate={required()} />
                 </ReferenceInput>
               </Box>
               <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
@@ -41,11 +54,10 @@ import {
                   <AutocompleteInput />
                 </ReferenceInput>
               </Box>
-              
             </Stack>
           </ListItemText>
         </ListItem>
-  
+
         <ListItem>
           <ListItemText sx={{ paddingTop: "0.6rem" }}>
             <Stack
@@ -60,13 +72,76 @@ import {
                 validate={required()}
               />
               <TextInput sx={{ width: "25%" }} source="code" />
-              
+
               <TextInput sx={{ width: "25%" }} source="sku" />
-              
+            </Stack>
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText sx={{ paddingTop: "0.6rem" }}>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+              alignItems={"center"}
+            >
+              <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+                <ReferenceArrayInput
+                  source="warehouse_ids"
+                  reference="warehouses"
+                >
+                  <AutocompleteArrayInput validate={required()} />
+                </ReferenceArrayInput>
+              </Box>
+
+              <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+                <ReferenceArrayInput
+                  source="cyclic_count_ids"
+                  reference="cyclic_counts"
+                >
+                  <AutocompleteArrayInput
+                    validate={[
+                      required(),
+                      maxLength(1, "Solo puede elegir un conteo"),
+                    ]}
+                  />
+                </ReferenceArrayInput>
+              </Box>
+
+              <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+                <ReferenceArrayInput
+                  source="whlocation_ids"
+                  reference="whlocations"
+                >
+                  <AutocompleteArrayInput />
+                </ReferenceArrayInput>
+              </Box>
+            </Stack>
+          </ListItemText>
+        </ListItem>
+        <ListSubheader>
+          <Typography variant="h6" paddingY={"0.8rem"}>
+            Unidades en Sistema
+          </Typography>
+        </ListSubheader>
+        <Divider />
+        <ListItem>
+          <ListItemText sx={{ paddingTop: "0.6rem" }}>
+            <Stack
+              direction={"row"}
+              justifyContent={styles.stackDefaults.justifyContent}
+              spacing={styles.stackDefaults.spacing}
+              alignItems={"center"}
+            >
+              <NumberInput
+                sx={{ width: "25%" }}
+                source="system_units"
+                validate={required()}
+              />
             </Stack>
           </ListItemText>
         </ListItem>
       </BaseEdit>
-    </Create>
-  );
-  
+    </ProductAlterContext>
+  </Create>
+);

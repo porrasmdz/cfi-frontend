@@ -65,6 +65,17 @@ export const ensureSubsortInResourceList = (
           return resource;
         });
         break;
+        
+      case "warehouse_locations":
+        real_attribute = "first_whlocation";
+        real_list = resource_list.map((resource: any) => {
+          resource[real_attribute] =
+            resource["warehouse_locations"].length > 0
+              ? resource["warehouse_locations"][0]
+              : null;
+          return resource;
+        });
+        break;
       default:
         real_attribute = attribute;
     }

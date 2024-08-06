@@ -1,23 +1,30 @@
 BUGS:
-* Redirection of related tables inside a ShowView is not working
-* No un bug pero, para las relaciones mas complejas de los Notebooks podria usar SQL VIEWS
-* Agregar funcionalidad de relacion many2many a producto bodega y conteo u.u
+* Redirection of related tables inside a ShowView is not working [DONE]
+* Agregar funcionalidad de relacion many2many a producto bodega y conteo u.u [DONE]
+* No un bug pero, para las relaciones mas complejas de los Notebooks podria usar SQL VIEWS [DONE]
 
 Inventory Module:
 1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
 2. Crear vista Detail [DONE]
-2.1 Crear formularios y vista de creación
-2.2 Crear formularios y vista de edición
+2.1 Crear formularios y vista de creación [DONE]
+2.2 Crear formularios y vista de edición [DONE]
+=======
+3. Al crear o editar el producto, creo / edito su count registry de tipo
+     system tmb (NO DEBO PODER EDITAR SOLO ADMIN) [DONE]
+4. Hacer editables los campos m2m de CyclicCounts, warehouses, whlocations [DONE]
 
 CyclicCount Module:
 1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
 2. Crear vista Detail [DONE]
-2.1 Crear formularios y vista de creación 
-2.2 Crear formularios y vista de edición
+2.1 Crear formularios y vista de creación [DONE]
+2.2 Crear formularios y vista de edición [DONE]
 ===
-3. Posibilidad de crear productos en el mismo conteo y buscar tmb
+2.3 Al listar productos veo sus unidades en sistema y en fisico q por default estan vacios
+2.4 Cuando doy click a registar conteo se crea un count registry de physical ligado a un conteo y a un producto 
+3. Posibilidad de crear productos en el mismo conteo en dialogo q explique q es por si esta en otra bodega
+3.1 Buscar tmb [DONE]
 4. Tabla de productos editable pero solo el campo unidades
-5. Posibilidad de ocultar o agregar columnas
+5. Posibilidad de ocultar o agregar columnas y paginacion? [DONE]
 
 Companies Module:
 1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
@@ -26,9 +33,10 @@ Companies Module:
 2.2 Crear formularios y vista de edición [DONE]
 
 Commons Module:
-1. Crear el layout de la pagina con navbar y sidebar local derecho para ver activity_registry en detail (responsive)
-2. Crear Menús superiores [Done]
-2.2. Hacerlos menus superiores Nested
+1. Crear el layout de la pagina con navbar y sidebar local 
+    derecho para ver activity_registry en detail (responsive) 
+2. Crear Menús superiores [DONE]
+2.2. Hacerlos menus superiores Nested [DONE]
 3. Poblar Notebooks de Inventory
 3.1 Poblar Notebooks de CyclicCount
 3.2 Poblar Notebooks de Companies
@@ -36,4 +44,5 @@ Commons Module:
 5. Verificar Responsiveness
 6. Añadir atajos y autoguardado en recarga de página (localStorage and save?). 
     Asimismo cancelar salir si no hay guardado
-7. Hacer que los input de busqueda tengan cooldown para hacer el query (no quiero que haga query insta pq parpadea)
+7. Hacer que los input de busqueda tengan cooldown para hacer el query (no quiero que haga query insta pq parpadea) [DONE?]
+8. Create product dependencies if not exist

@@ -9,6 +9,8 @@ import {
 import BaseEdit from "../../commons/components/BaseEdit";
 import { ListItem, ListItemText, Stack, Box } from "@mui/material";
 import { styles } from "../../commons/themes";
+
+const filterToQuery = (searchText:string) => ({ name: `${searchText}` });
 export const CountRegistryEdit = () => (
   <Edit>
     <BaseEdit>
@@ -27,7 +29,7 @@ export const CountRegistryEdit = () => (
             />
             <Box width={"25%"} position={"relative"} top={-2}>
               <ReferenceInput source="product_id" reference="products">
-                <AutocompleteInput validate={required()} />
+                <AutocompleteInput filterToQuery={filterToQuery} validate={required()} />
               </ReferenceInput>
             </Box>
             <Box width={"25%"} position={"relative"} top={-2}>
@@ -35,7 +37,7 @@ export const CountRegistryEdit = () => (
                 source="cyclic_count_id"
                 reference="cyclic_counts"
               >
-                <AutocompleteInput validate={required()} />
+                <AutocompleteInput filterToQuery={filterToQuery} validate={required()} />
               </ReferenceInput>
             </Box>
           </Stack>

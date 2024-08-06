@@ -3,6 +3,7 @@ import {
   DateField,
   List,
   SingleFieldList,
+  DatagridConfigurable,
   ChipField,
   EditButton,
   TextField,
@@ -10,11 +11,23 @@ import {
   SimpleList,
   SearchInput,
   SelectInput,
-  TextInput,
+  TopToolbar,
+  FilterButton,
+  CreateButton,
+  ExportButton,
+  SelectColumnsButton
 } from "react-admin";
 import { useMediaQuery, Theme } from "@mui/system";
 import { DetailedCyclicCount } from "../interfaces/ICyclicCount";
 
+const CCListActions = () => (
+  <TopToolbar>
+      <SelectColumnsButton preferenceKey="cyclic_counts.datagrid" />
+      <FilterButton />
+      <CreateButton />
+      <ExportButton />
+  </TopToolbar>
+);
 const cyclicFilters = [
   <SearchInput placeholder="Nombre" source="name" alwaysOn />,
   <SelectInput
@@ -40,7 +53,7 @@ export const CyclicCountList = () => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
 
   return (
-    <List filters={cyclicFilters}>
+    <List filters={cyclicFilters} actions={<CCListActions/>}>
       {isSmall ? (
         <SimpleList
           primaryText={(record: DetailedCyclicCount) => record.name}
@@ -51,7 +64,7 @@ export const CyclicCountList = () => {
           linkType="show"
         />
       ) : (
-        <Datagrid>
+        <DatagridConfigurable>
           <TextField source="name" />
           <TextField source="status" />
           <TextField source="count_type" />
@@ -61,8 +74,9 @@ export const CyclicCountList = () => {
               <ChipField source="name" />
             </SingleFieldList>
           </ArrayField>
+          
           <EditButton />
-        </Datagrid>
+        </DatagridConfigurable>
       )}
     </List>
   );

@@ -49,7 +49,7 @@ export const CyclicCountCreate = () => (
             <DateInput sx={{ width: "25%" }} source="count_date_finish" />
             <Box sx={{ width: "25%" }}>
               <ReferenceInput source="parent_id" reference="cyclic_counts">
-                <AutocompleteInput />
+                <AutocompleteInput label="Conteo Previo"  />
               </ReferenceInput>
             </Box>
           </Stack>

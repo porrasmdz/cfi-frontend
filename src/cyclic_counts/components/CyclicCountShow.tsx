@@ -1,6 +1,5 @@
 import {
   ArrayField,
-  DatagridConfigurable,
   DateField,
   Labeled,
   ReferenceField,
@@ -8,27 +7,22 @@ import {
   SingleFieldList,
   EditButton,
   TopToolbar,
-  CreateButton,
-  ExportButton,
-  FilterButton,
-  List,
   ChipField,
   TabbedShowLayout,
   TextField,
   ReferenceManyField,
-  NumberField,
-  SelectColumnsButton,
-  SearchInput,
-  TextInput,
-  ReferenceInput,
-  ShowBase,
-  ReferenceOneField,
+
 } from "react-admin";
-import { Box, ListItemText, ListItem, Stack, Button } from "@mui/material";
+import {
+  Box,
+  ListItemText,
+  ListItem,
+  Stack,
+  Button,
+} from "@mui/material";
 import { styles } from "../../commons/themes";
 import BaseShow from "../../commons/components/BaseShow";
-import AggregationTable from "../../commons/components/AggregationTable";
-
+import { NestedProductList } from "./NestedProductList";
 export const CyclicCountShow = () => {
   return (
     <Show actions={<CyclicCountActions />}>
@@ -125,64 +119,5 @@ const CyclicCountActions = () => {
     <TopToolbar>
       <Button>Cerrar Conteo</Button>
     </TopToolbar>
-  );
-};
-const ProductListActions = () => (
-  <TopToolbar>
-    <SelectColumnsButton preferenceKey="products.datagrid" />
-    <FilterButton />
-    <CreateButton />
-    <ExportButton />
-  </TopToolbar>
-);
-
-const cyclicProductFilters = [
-  <SearchInput placeholder="Nombre" source="name" alwaysOn />,
-  <TextInput placeholder="Codigo" source="code" />,
-  <ReferenceInput
-    placeholder="U.Medida"
-    source="measure_unit_id"
-    reference="measure_units"
-  />,
-];
-
-const NestedProductList = () => {
-  return (
-    <List filters={cyclicProductFilters} actions={<ProductListActions />}>
-      <DatagridConfigurable rowClick={false}>
-        <TextField source="code" />
-        <TextField source="name" />
-        <ArrayField source="warehouses" sortBy="warehouses.name">
-          <SingleFieldList linkType={false}>
-            <ChipField source="name" />
-          </SingleFieldList>
-        </ArrayField>
-        <ArrayField
-          source="warehouse_locations"
-          sortBy="warehouse_locations.name"
-        >
-          <SingleFieldList linkType={false}>
-            <ChipField source="name" />
-          </SingleFieldList>
-        </ArrayField>
-
-        <ReferenceField
-          source="warehouse_type_id"
-          reference="warehouse_types"
-          sortBy="warehouse_types.name"
-        />
-
-        <NumberField source="unit_cost" />
-        <ReferenceOneField
-          label="U. Sistema"
-          reference="count_registries"
-          target="product_id"
-          emptyText="n/a"
-          link={false}
-        >
-          <TextField source="registry_units" />
-        </ReferenceOneField>
-      </DatagridConfigurable>
-    </List>
   );
 };

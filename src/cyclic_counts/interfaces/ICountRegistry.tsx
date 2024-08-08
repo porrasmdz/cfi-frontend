@@ -27,6 +27,7 @@ export interface CreateCountRegistry extends CreateSchema {
 }
 
 export interface UpdateCountRegistry extends UpdateSchema {
+    id?: string;
     registry_type?: "system" | "physical" | "consolidated";
     registry_units?: number;
     registry_cost?: number;

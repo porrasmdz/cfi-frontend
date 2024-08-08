@@ -29,7 +29,6 @@ export const ProductAlterContext = ({ children }) => {
 
     if (data.id != null) {
       count_registry.product_id = data.id;
-      console.log("ACTUALIZANDO", product);
       dataProvider
         .update("products", {
           id: data.id,

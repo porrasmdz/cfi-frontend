@@ -1,13 +1,13 @@
 BUGS:
 * Redirection of related tables inside a ShowView is not working [DONE]
 * Agregar funcionalidad de relacion many2many a producto bodega y conteo u.u [DONE]
-* No un bug pero, para las relaciones mas complejas de los Notebooks podria usar SQL VIEWS [TODO]
-* No puedo crear un conteo ciclico D: (Simplificar su creación)
-* Optimize product with count_registries by creating endpoint with cyclic_count_id required
+* No puedo crear un conteo ciclico D: (Simplificar su creación) [DONE]
+* Optimize product with count_registries by creating endpoint with cyclic_count_id required 
 * Make custom datatable to trigger creationg model on row click
 * Los formularios no deben permitir mas de 4 cifras decimales
 * Implementar ETL al cargar un excel para limpiar cifras decimales, corregir datos avisando, limpiando nulos etc...
-* No puedo poner numeros enteros en conteo
+* No puedo poner numeros no enteros en conteo fisico
+* Return Reports with pandas ETL pipeline
 
 Inventory Module:
 1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
@@ -32,6 +32,7 @@ CyclicCount Module:
 3.1 Buscar tmb [DONE]
 4. Tabla de productos editable pero solo el campo unidades [DONE]
 5. Posibilidad de ocultar o agregar columnas y paginacion? [DONE]
+6. Debo poder cerrar conteo (antes debo optimizar los productos)
 
 Companies Module:
 1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
@@ -44,12 +45,15 @@ Commons Module:
     derecho para ver activity_registry en detail (responsive) 
 2. Crear Menús superiores [DONE]
 2.2. Hacerlos menus superiores Nested [DONE]
+* No un bug pero, para las relaciones mas complejas de los Notebooks podria usar SQL VIEWS [TODO]
 3. Poblar Notebooks de Inventory
 3.1 Poblar Notebooks de CyclicCount
 3.2 Poblar Notebooks de Companies
-4. Crear Modales Simples, Con Acciones, Con aceptar, con tipo
-5. Verificar Responsiveness
+4. Crear Modales Simples, Con Acciones, Con aceptar, con tipo [DONE BY FW]
+5. Verificar Responsiveness (Switch to Grid + refactoring?)
 6. Añadir atajos y autoguardado en recarga de página (localStorage and save?). 
     Asimismo cancelar salir si no hay guardado
-7. Hacer que los input de busqueda tengan cooldown para hacer el query (no quiero que haga query insta pq parpadea) [DONE?]
-8. Create product dependencies if not exist
+7. Hacer que los input de busqueda tengan cooldown para hacer el query 
+    (no quiero que haga query insta pq parpadea) [CANCELLED NOT IMPORTANT]
+8. Make Cycliccount show final reports
+9. Multitenancy

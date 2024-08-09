@@ -43,9 +43,7 @@ export const CyclicCountShow = () => {
               <Labeled sx={{ width: "25%" }}>
                 <TextField source="count_type" />
               </Labeled>
-              <Labeled sx={{ width: "25%" }}>
-                <ReferenceField source="parent_id" reference="parents" />
-              </Labeled>
+            
             </Stack>
           </ListItemText>
         </ListItem>

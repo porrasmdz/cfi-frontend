@@ -75,7 +75,6 @@ export const CyclicCountList = () => {
             </SingleFieldList>
           </ArrayField>
           
-          <EditButton />
         </DatagridConfigurable>
       )}
     </List>

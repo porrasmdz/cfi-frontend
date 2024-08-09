@@ -25,6 +25,7 @@ export interface CreateCyclicCount extends CreateSchema {
 }
 
 export interface UpdateCyclicCount extends UpdateSchema {
+    id? : string;
     name?: string;
     status?: string;
     count_type?: string;

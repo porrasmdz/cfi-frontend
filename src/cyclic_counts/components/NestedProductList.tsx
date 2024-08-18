@@ -1,4 +1,4 @@
-import { Grid, Button} from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import {
   TopToolbar,
@@ -26,6 +26,8 @@ import {
   SaveContextProvider,
   SimpleForm,
   NumberInput,
+  RecordContextProvider,
+  WrapperField,
 } from "react-admin";
 import BaseDialog from "../../commons/components/BaseDialog";
 import { ReadProduct } from "../../inventory/interfaces/IProduct";
@@ -35,7 +37,6 @@ import {
   UpdateCountRegistry,
 } from "../interfaces/ICountRegistry";
 import { ReadCyclicCount } from "../interfaces/ICyclicCount";
-
 
 export const NestedProductList = () => {
   const cyclic_count = useRecordContext<ReadCyclicCount>();
@@ -150,11 +151,12 @@ export const NestedProductList = () => {
   return (
     <>
       <List
+      
         filters={cyclicProductFilters}
         actions={<ProductListActions />}
         disableSyncWithLocation
       >
-        <DatagridConfigurable rowClick={false}>
+        <DatagridConfigurable preferenceKey="products.datagrid" rowClick={false} >
           <TextField source="code" />
           <TextField source="name" />
           <ArrayField source="warehouses" sortBy="warehouses.name">
@@ -178,50 +180,41 @@ export const NestedProductList = () => {
           />
 
           <NumberField source="unit_cost" />
-          <ReferenceOneField
-            label="U. Sistema"
-            reference="count_registries"
-            target="product_id"
-            filter={{
-              registry_type: "system",
-              cyclic_count_id: cyclic_count?.id ?? "",
-            }}
-            emptyText="n/a"
-            link={false}
-          >
-            <TextField source="registry_units" />
-          </ReferenceOneField>
-          <ReferenceOneField
-            label="U. Físicas"
-            reference="count_registries"
-            target="product_id"
-            filter={{
-              registry_type: "physical",
-              cyclic_count_id: cyclic_count?.id ?? "",
-            }}
-            emptyText="n/c"
-            link={false}
-          >
-            <TextField source="registry_units" />
-          </ReferenceOneField>
-          <ReferenceOneField
-            label="Valor Físico"
-            reference="count_registries"
-            target="product_id"
-            filter={{
-              registry_type: "physical",
-              cyclic_count_id: cyclic_count?.id ?? "",
-            }}
-            emptyText="n/c"
-            link={false}
-          >
-            <TextField source="registry_cost" />
-          </ReferenceOneField>
 
-          <TriggerCreateDialogButton
-            setOpen={handleOpen}
-            setProductToCount={setCountProduct}
-          />
+          <ArrayField
+            source="count_registries"
+            label="U. Sistema"
+            filter={{ registry_type: "system" }}
+          >
+            <SingleFieldList empty={<>n/c</>} linkType={false}>
+              <TextField source="registry_units"></TextField>
+            </SingleFieldList>
+          </ArrayField>
+          <ArrayField
+            source="count_registries"
+            label="U. Fisico"
+            filter={{ registry_type: "physical" }}
+          >
+            <SingleFieldList empty={<>n/c</>} linkType={false}>
+              <TextField source="registry_units"></TextField>
+            </SingleFieldList>
+          </ArrayField>
+          <ArrayField
+            source="count_registries"
+            label="Valor Fisico"
+            filter={{ registry_type: "physical" }}
+          >
+            <SingleFieldList empty={<>n/c</>} linkType={false}>
+              <TextField source="registry_cost"></TextField>
+            </SingleFieldList>
+          </ArrayField>
+
+          <WrapperField label="Acciones">
+            <TriggerCreateDialogButton
+              setOpen={handleOpen}
+              setProductToCount={setCountProduct}
+            />
+          </WrapperField>
         </DatagridConfigurable>
       </List>
 
@@ -247,36 +240,74 @@ export const NestedProductList = () => {
     </>
   );
 };
-
-
 const ProductListActions = () => (
-    <TopToolbar>
-      <SelectColumnsButton preferenceKey="products.datagrid" />
-      <FilterButton />
-      <CreateButton />
-      <ExportButton />
-    </TopToolbar>
-  );
-  
-  const cyclicProductFilters = [
-    <SearchInput placeholder="Nombre" source="name" alwaysOn />,
-    <TextInput placeholder="Codigo" source="code" />,
-    <ReferenceInput
-      placeholder="U.Medida"
-      source="measure_unit_id"
-      reference="measure_units"
-    />,
-  ];
-  
-  //@ts-ignore
-  const TriggerCreateDialogButton = ({ setOpen, setProductToCount,
-    ...props
-  }) => {
-    const record = useRecordContext();
-    const handleOpen = () => {
-      setProductToCount(record);
-  
-      setOpen(true);
-    };
-    return <Button onClick={handleOpen}>Contar</Button>;
+  <TopToolbar>
+    <SelectColumnsButton preferenceKey="products.datagrid" />
+    <FilterButton />
+    <CreateButton />
+    <ExportButton />
+  </TopToolbar>
+);
+
+const cyclicProductFilters = [
+  <SearchInput placeholder="Nombre" source="name" alwaysOn />,
+  <TextInput placeholder="Codigo" source="code" />,
+  <ReferenceInput
+    placeholder="U.Medida"
+    source="measure_unit_id"
+    reference="measure_units"
+  />,
+];
+
+//@ts-ignore
+const TriggerCreateDialogButton = ({ setOpen, setProductToCount,
+  ...props
+}) => {
+  const record = useRecordContext();
+  const handleOpen = () => {
+    setProductToCount(record);
+
+    setOpen(true);
   };
+  return <Button onClick={handleOpen}>Contar</Button>;
+};
+
+//   <ReferenceOneField
+//   label="U. Sistema"
+//   reference="count_registries"
+//   target="product_id"
+//   filter={{
+//     registry_type: "system",
+//     cyclic_count_id: cyclic_count?.id ?? "",
+//   }}
+//   emptyText="n/a"
+//   link={false}
+// >
+//   <TextField source="registry_units" />
+// </ReferenceOneField>
+// <ReferenceOneField
+//   label="U. Físicas"
+//   reference="count_registries"
+//   target="product_id"
+//   filter={{
+//     registry_type: "physical",
+//     cyclic_count_id: cyclic_count?.id ?? "",
+//   }}
+//   emptyText="n/c"
+//   link={false}
+// >
+//   <TextField source="registry_units" />
+// </ReferenceOneField>
+// <ReferenceOneField
+//   label="Valor Físico"
+//   reference="count_registries"
+//   target="product_id"
+//   filter={{
+//     registry_type: "physical",
+//     cyclic_count_id: cyclic_count?.id ?? "",
+//   }}
+//   emptyText="n/c"
+//   link={false}
+// >
+//   <TextField source="registry_cost" />
+// </ReferenceOneField>

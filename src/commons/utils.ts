@@ -65,7 +65,17 @@ export const ensureSubsortInResourceList = (
           return resource;
         });
         break;
-        
+      case "cyclic_counts":
+          real_attribute = "first_ccount";
+          real_list = resource_list.map((resource: any) => {
+            resource[real_attribute] =
+              resource["cyclic_counts"].length > 0
+                ? resource["cyclic_counts"][0]
+                : null;
+            return resource;
+          });
+          break;
+          
       case "warehouse_locations":
         real_attribute = "first_whlocation";
         real_list = resource_list.map((resource: any) => {

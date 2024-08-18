@@ -98,7 +98,7 @@ export const ProductEdit = () => (
                       required(),
                       maxLength(1, "Solo puede elegir un conteo"),
                     ]}
-                    disabled
+                  
                   />
                 </ReferenceArrayInput>
               </Box>

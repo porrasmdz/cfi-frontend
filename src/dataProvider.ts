@@ -86,10 +86,10 @@ const customProvider = {
     };
   },
 
-  passCyclicCount: async (resource: any, params: any) => {
-    const url = `${apiUrl}/${resource}`;
-    const { json, headers } = await httpClient(url, { signal: params.signal });
-    return json.results;
+  closeCyclicCount: async (cyclic_count_id: any) => {
+    const url = `${apiUrl}/cyclic_counts/${cyclic_count_id}/close`;
+    const { json, headers } = await httpClient(url);
+    return json;
   },
 };
 export default customProvider;

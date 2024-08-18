@@ -7,7 +7,11 @@ import {
   SearchInput,
   ReferenceInput,
   TextField,
-  SimpleList
+  SimpleList,
+  ReferenceArrayField,
+  ArrayField,
+  ChipField,
+  SingleFieldList,
 } from "react-admin";
 
 import { useMediaQuery, Theme } from "@mui/system";
@@ -29,8 +33,7 @@ export const ProductList = () => {
       {isSmall ? (
         <SimpleList
           primaryText={(record: DetailedProduct) => record.name}
-          secondaryText={(record: DetailedProduct) =>record.unit_cost
-          }
+          secondaryText={(record: DetailedProduct) => record.unit_cost}
           tertiaryText={(record: DetailedProduct) => record.category.name}
           linkType="show"
         />
@@ -41,7 +44,12 @@ export const ProductList = () => {
           <NumberField source="unit_cost" />
           <ReferenceField source="measure_unit_id" reference="measure_units" />
           <ReferenceField source="category_id" reference="product_categories" />
-            <EditButton />
+          <ArrayField source="cyclic_counts" sortBy="cyclic_counts.name">
+            <SingleFieldList linkType={false}>
+              <ChipField source="name" />
+            </SingleFieldList>
+          </ArrayField>
+          <EditButton />
         </Datagrid>
       )}
     </List>

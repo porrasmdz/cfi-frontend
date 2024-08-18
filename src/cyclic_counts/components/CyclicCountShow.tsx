@@ -191,8 +191,8 @@ const CyclicCountActions = () => {
   }
   return (
     <TopToolbar>
-      <input id="file" type="file" onChange={handleFileChange} />
-      {file && <Button onClick={handleUpload} disabled={isLoading}>Subir Productos</Button>}
+      {/* <input id="file" type="file" onChange={handleFileChange} />
+      {file && <Button onClick={handleUpload} disabled={isLoading}>Subir Productos</Button>} */}
     
       <Button onClick={closeCyclicCount} disabled={isLoading}>Cerrar Conteo</Button>
     </TopToolbar>

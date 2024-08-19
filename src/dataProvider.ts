@@ -10,8 +10,12 @@ import {
 
 const apiUrl = import.meta.env.VITE_SIMPLE_REST_URL;
 const httpClient = (url: string, options: any = {}) => {
+  const token = localStorage.getItem("token") ?? "";
   if (!options.headers) {
-    options.headers = new Headers({ Accept: "application/json" });
+    options.headers = new Headers({
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    });
   }
   // const { token } = JSON.parse(localStorage.getItem('auth')|| '');
   // options.headers.set('Authorization', `Bearer ${token}`);
@@ -23,7 +27,6 @@ dataProvider.supportAbortSignal = true;
 const customProvider = {
   ...dataProvider,
   getList: async (resource: any, params: any) => {
-    
     const query = convertPaginationToApiFilters(params);
     const url =
       `${apiUrl}/${resource}?sort_by=${query.sort_by}` +
@@ -59,7 +62,6 @@ const customProvider = {
   },
 
   getManyReference: async (resource: any, params: any) => {
-
     const query = convertPaginationToApiFilters(params);
     query.filters[params.target] = { value: params.id, match_mode: "eq" };
     const url =
@@ -85,6 +87,22 @@ const customProvider = {
       ),
     };
   },
+  delete: async (resource: any, params: any) => {
+    const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`, {
+      method: "DELETE",
+    });
+    return { data: json.results };
+  },
+  deleteMany: (resource: any, params: any) =>
+    Promise.all(
+        params.ids.map(id =>
+            httpClient(`${apiUrl}/${resource}/${id}`, {
+                method: 'DELETE',
+            })
+        )
+    ).then(responses => ({
+        data: responses.map(({ json }) => json.id),
+    })),
 
   closeCyclicCount: async (cyclic_count_id: any) => {
     const url = `${apiUrl}/cyclic_counts/${cyclic_count_id}/close`;

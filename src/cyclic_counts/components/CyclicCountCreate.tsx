@@ -45,6 +45,7 @@ export const CyclicCountCreate = () => (
                   />
                 </ReferenceArrayInput>
               </Box>
+              
             </Stack>
           </ListItemText>
         </ListItem>
@@ -66,8 +67,11 @@ export const CyclicCountCreate = () => (
                 source="count_date_finish"
                 validate={required()}
               />
-
-              
+              <Box sx={{ width: "25%" }} position={"relative"} top={-2}>
+                <ReferenceInput source="company_id" reference="companies">
+                  <AutocompleteInput validate={required()} />
+                </ReferenceInput>
+              </Box>
             </Stack>
           </ListItemText>
         </ListItem>

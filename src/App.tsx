@@ -77,6 +77,11 @@ export const App = () => {
     authProvider={authProvider}
     dataProvider={dataProvider} 
     dashboard={Dashboard}>
+      {/* Auth RBAC */}
+      <Resource name="users" 
+      list={ListGuesser}
+       />
+
       {/* Companies */}
       <Resource name="corporative_groups" 
       list={CorpGroupList}

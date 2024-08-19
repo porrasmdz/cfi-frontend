@@ -41,7 +41,6 @@ const authProvider: AuthProvider = {
         return Promise.resolve();
     },
     
-    //TODO: COMPLETE IDENTITY WITH /ME AND MY PERMISSIONS
     getIdentity: () => {
         const token = localStorage.getItem('token')
         const request = new Request(`${apiUrl}/users/me`, {
@@ -69,7 +68,7 @@ const authProvider: AuthProvider = {
         const token = localStorage.getItem('token')
         const request = new Request(`${apiUrl}/users/me`, {
             method: 'GET',
-            headers: new Headers({ 'Authorization': `Bearer ${token}` }),
+            headers: new Headers({'Authorization': `Bearer ${token}` }),
         });
         return fetch(request)
             .then(response => {

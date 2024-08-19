@@ -18,7 +18,7 @@ export const ProductCategoryCreate = () => (
               source="name"
               validate={required()}
             />
-            <TextInput sx={{ width: "25%" }} source="short_codename" />
+            <TextInput sx={{ width: "25%" }}  validate={required()} source="short_codename" />
           </Stack>
         </ListItemText>
       </ListItem>

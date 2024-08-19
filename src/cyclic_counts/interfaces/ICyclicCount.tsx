@@ -7,6 +7,7 @@ export interface ReadCyclicCount extends ReadSchema {
     count_date_start: string;  // DateTime as string
     count_date_finish: string;  // DateTime as string
     // warehouses?: ReadWarehouse[];
+    company_id: string;
     parent_id?: string;  // UUID as string
 }
 
@@ -22,6 +23,7 @@ export interface CreateCyclicCount extends CreateSchema {
     count_date_finish: string;  // DateTime as string
     warehouse_ids: string[];  // UUID as string[]
     parent_id?: string;  // UUID as string
+    company_id: string;
 }
 
 export interface UpdateCyclicCount extends UpdateSchema {
@@ -33,4 +35,5 @@ export interface UpdateCyclicCount extends UpdateSchema {
     count_date_finish?: string;  // DateTime as string
     warehouse_ids?: string[];  // UUID as string[]
     parent_id?: string;  // UUID as string
+    company_id?: string;
 }

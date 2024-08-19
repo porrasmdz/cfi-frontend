@@ -5,7 +5,6 @@ import {
   SingleFieldList,
   DatagridConfigurable,
   ChipField,
-  EditButton,
   TextField,
   ArrayField,
   SimpleList,

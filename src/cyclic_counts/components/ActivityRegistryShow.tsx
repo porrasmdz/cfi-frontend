@@ -29,16 +29,13 @@ export const ActivityRegistryShow = () => (
             spacing={styles.stackDefaults.spacing}
           >
             <Labeled sx={{ width: "25%" }}>
-              <TextField source="detail" />
+              <TextField source="model" />
             </Labeled>
             <Labeled sx={{ width: "25%" }}>
-              <TextField source="user" />
+              <TextField source="action" />
             </Labeled>
             <Labeled sx={{ width: "25%" }}>
-              <ReferenceField
-                source="count_registry_id"
-                reference="count_registries"
-              />
+              <TextField source="user.email" />
             </Labeled>
 
             <Labeled sx={{ width: "25%" }}>
@@ -57,7 +54,7 @@ export const ActivityRegistryShow = () => (
             sx={{ paddingBottom: "0.6rem" }}
           >
             <Labeled sx={{ width: "50%" }}>
-              <TextField source="commentary" />
+              <Box />
             </Labeled>
             <Labeled sx={{ width: "25%" }}>
               <Box />

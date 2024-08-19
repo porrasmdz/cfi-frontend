@@ -18,6 +18,7 @@ import { CreateCyclicCount, UpdateCyclicCount } from "../interfaces/ICyclicCount
           status: data.status ?? "Abierto",
           count_date_finish: data.count_date_finish ?? "",
           warehouse_ids: data.warehouse_ids ?? [],
+          company_id: data?.company_id ?? "",
           parent_id: data?.parent_id 
       };
      const cyclic_count_id = data?.id ?? null

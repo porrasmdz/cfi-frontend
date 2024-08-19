@@ -12,15 +12,9 @@ import { useMediaQuery, Theme } from "@mui/system";
 import { DetailedActivityRegistry } from "../interfaces/IActivityRegistry";
 
 const activityFilters = [
-  <SearchInput placeholder="Acción" source="detail" alwaysOn />,
+  <SearchInput placeholder="Modelo" source="model" alwaysOn />,
  
-  <SelectInput
-    label="Usuario"
-    source="user"
-    choices={[
-      { id: "bdce6d19-9d3f-48cb-9e5d-9c0700db3b3c", name: "Usuario X" },
-    ]}
-  />,
+  
 ];
 
 export const ActivityRegistryList = () => {
@@ -39,15 +33,10 @@ export const ActivityRegistryList = () => {
         />
       ) : (
         <Datagrid>
-          <TextField source="detail" />
-          <TextField source="commentary" />
-          <TextField source="user" />
-          <ReferenceField
-            source="count_registry_id"
-            reference="count_registries"
-          >
-            <TextField source="registry_type" />
-          </ReferenceField>
+          <TextField source="model" />
+          <TextField source="action" />
+          <TextField source="user.email" />
+          
           <EditButton />
         </Datagrid>
       )}

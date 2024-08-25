@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   height: 128,
   width: 128,
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("sm")]: {
     height: 192,
     width: 192,
   },
@@ -26,7 +26,7 @@ const IconStack = styled(Stack)(({ theme }) => ({
   display:"flex",
   height: 64,
   widht: 64,
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("sm")]: {
     height: 128,
     widht: 128,
   },

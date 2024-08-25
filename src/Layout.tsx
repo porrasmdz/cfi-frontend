@@ -17,6 +17,7 @@ import {
   Card,
   CardContent,
   Drawer,
+  styled,
 } from "@mui/material";
 import { RBACAppBar } from "./commons/components/RBACAppBar";
 import { HomeAppBar } from "./commons/components/HomeAppBar";
@@ -77,22 +78,27 @@ export const RBACLayout = ({ children }: { children: ReactNode }) => {
     </RALayout>
   );
 };
+
 //@ts-ignore
-export const ClosedSidebar = () => (
-  <Drawer variant="temporary" open={false} />
-);
+export const ClosedSidebar = () => <Drawer variant="temporary" open={false} />;
 export const HomeLayout = ({ children }: { children: ReactNode }) => {
+
+  const HomeStack = styled(Stack)(({ theme }) => ({
+    spacing: 8,
+    justifyContent: "center",
+    padding: "1.2rem",
+    width: '100%',
+    alignSelf: 'center',
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "70%",
+    },
+  }));
   return (
     <RALayout appBar={HomeAppBar} sidebar={ClosedSidebar}>
-      <Stack
-        spacing={8}
-        justifyContent={"center"}
-        direction={"row"}
-        padding={"1.2rem"}
-        
-      >
-        {children}
-      </Stack>
+      <HomeStack sx={{direction: "row"}}>{children}</HomeStack>
 
       <CheckForApplicationUpdate />
     </RALayout>

@@ -22,6 +22,7 @@ import {
   useThemesContext,
   AppBarProps,
 } from "react-admin";
+import RBACNavbarMenu from "./RBACNavbarMenu";
 
 export const RBACAppBar: FC<AppBarProps> = memo((props) => {
   const {
@@ -49,7 +50,7 @@ export const RBACAppBar: FC<AppBarProps> = memo((props) => {
         >
           <SidebarToggleButton className={AppBarClasses.menuButton} />
           <RBACLogo />
-          <CFINavbarMenu/>
+          <RBACNavbarMenu/>
           <Box flex={1} />
 
           {children}

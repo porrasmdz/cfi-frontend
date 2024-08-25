@@ -3,7 +3,7 @@ import { Typography, Stack } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { AppBarClasses } from "react-admin";
 
-function CFILogo() {
+function CFILogo({icon = false}) {
   return (
     <Stack
       direction={"row"}
@@ -24,7 +24,7 @@ function CFILogo() {
         }}
       >
         <DashboardIcon />
-        <Typography
+        {!icon && <Typography
           paddingRight={"1.2rem"}
           className={AppBarClasses.title}
           maxWidth={"250px"}
@@ -32,7 +32,7 @@ function CFILogo() {
           variant="h6"
         >
           CFIv2
-        </Typography>
+        </Typography>}
       </Link>
     </Stack>
   );

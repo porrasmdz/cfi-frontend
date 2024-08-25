@@ -78,6 +78,7 @@ export const HomeModule = () => {
       <Admin
         layout={HomeLayout}
         {...themes}
+        basename="/home"
         authProvider={authProvider}
         dataProvider={dataProvider}
       >

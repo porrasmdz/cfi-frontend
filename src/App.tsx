@@ -7,7 +7,7 @@ export const App = () => {
     <BrowserRouter>
         <Routes>
           
-            <Route path="/" element={<HomeModule />}/>
+            <Route path="/home/*" element={<HomeModule />}/>
             <Route path="/rbac/*" element={<RBACModule />}/>
             <Route path="/cfi/*" element={<CFIModule/>} />
         </Routes>

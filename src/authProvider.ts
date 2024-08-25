@@ -46,8 +46,10 @@ const authProvider: AuthProvider = {
     });
     return fetch(request).then((response) => {
       if (response.status >= 300) {
+        localStorage.removeItem('token');
         return Promise.reject({
           message: "Token inválido, vuelva a iniciar sesión",
+          logoutUser: false
         });
       }
       return Promise.resolve();

@@ -27,7 +27,7 @@ const authProvider: AuthProvider = {
       });
   },
   checkError: (error) => {
-    const status = error.status;
+    const status = error.code;
     if (status === 401) {
       localStorage.removeItem('token');
       return Promise.reject({ logoutUser: true });
@@ -48,6 +48,8 @@ const authProvider: AuthProvider = {
       if (response.status >= 300) {
         localStorage.removeItem('token');
         return Promise.reject({
+          
+          status: 401,
           message: "Token inválido, vuelva a iniciar sesión",
           logoutUser: false
         });
@@ -69,8 +71,11 @@ const authProvider: AuthProvider = {
     });
     return fetch(request)
       .then((response) => {
-        if (response.status < 200 || response.status >= 300) {
-          throw new Error(response.statusText);
+       if (response.status < 200 || response.status >= 300) {
+          const err = new Error(response.statusText);
+          //@ts-ignore
+          err.code = response.status
+          throw err
         }
         return response.json();
       })
@@ -80,8 +85,9 @@ const authProvider: AuthProvider = {
           fullName: user.email,
         });
       })
-      .catch(() => {
+      .catch((err) => {
         return Promise.reject({
+          code: err.code,
           message: "Token inválido, vuelva a iniciar sesión",
         });
       });

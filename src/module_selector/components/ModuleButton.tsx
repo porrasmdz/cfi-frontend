@@ -34,7 +34,7 @@ const IconStack = styled(Stack)(({ theme }) => ({
 //@ts-ignore
 export const ModuleButton = ({ link, name, icon }) => {
   return (
-    <Item>
+    <Item >
       <Link
         href={link}
         underline="none"

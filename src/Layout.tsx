@@ -1,9 +1,12 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   Layout as RALayout,
   CheckForApplicationUpdate,
   Sidebar,
   SidebarProps,
+  SidebarClasses,
+  useLocale,
+  useSidebarState,
 } from "react-admin";
 import { CFIAppBar } from "./commons/components/CFIAppBar";
 import {
@@ -13,6 +16,7 @@ import {
   Box,
   Card,
   CardContent,
+  Drawer,
 } from "@mui/material";
 import { RBACAppBar } from "./commons/components/RBACAppBar";
 import { HomeAppBar } from "./commons/components/HomeAppBar";
@@ -73,20 +77,21 @@ export const RBACLayout = ({ children }: { children: ReactNode }) => {
     </RALayout>
   );
 };
-
+//@ts-ignore
+export const ClosedSidebar = () => (
+  <Drawer variant="temporary" open={false} />
+);
 export const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <RALayout appBar={HomeAppBar}>
+    <RALayout appBar={HomeAppBar} sidebar={ClosedSidebar}>
       <Stack
         spacing={8}
         justifyContent={"center"}
         direction={"row"}
         padding={"1.2rem"}
+        
       >
-        <Box width={"70%"}>{children}</Box>
-        {/* <Card sx={{ width: "25%" }}>
-          <CardContent>Aqui va un registro de actividad</CardContent>
-        </Card> */}
+        {children}
       </Stack>
 
       <CheckForApplicationUpdate />

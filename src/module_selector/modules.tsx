@@ -6,7 +6,7 @@ import {
   EditGuesser,
   CustomRoutes,
 } from "react-admin";
-import { Route } from 'react-router-dom';
+import { Route } from "react-router-dom";
 //TODO: Refactor this boilerplate code with index.ts per feature
 import { Dashboard } from "../auth/pages/Dashboard";
 // Companies Module
@@ -72,22 +72,21 @@ import themes from "../commons/themes";
 import authProvider from "../authProvider";
 import { ModulesList } from "./components/ModulesList";
 
-
 export const HomeModule = () => {
-    return (
-      <Admin
-        layout={HomeLayout}
-        {...themes}
-        basename="/home"
-        authProvider={authProvider}
-        dataProvider={dataProvider}
-      >
-       <CustomRoutes>
+  return (
+    <Admin
+      layout={HomeLayout}
+      {...themes}
+      basename="/home"
+      authProvider={authProvider}
+      dataProvider={dataProvider}
+    >
+      <CustomRoutes>
         <Route path="/" element={<ModulesList></ModulesList>}></Route>
-       </CustomRoutes>
-      </Admin>
-    );
-  };
+      </CustomRoutes>
+    </Admin>
+  );
+};
 export const CFIModule = () => {
   return (
     <Admin

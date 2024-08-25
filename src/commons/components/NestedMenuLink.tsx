@@ -53,9 +53,6 @@ export const NestedMenuItemLink = forwardRef<any, NestedMenuItemLinkProps>(
     })
     const hasChildMatch = matchingChildTarget != null;
     
-    useEffect(()=>{
-      console.log(currentPath)
-    },[to])
     const renderMenuItem = () => {
       return !children ? (
         <StyledMenuItem

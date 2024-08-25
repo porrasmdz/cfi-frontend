@@ -3,7 +3,7 @@ import { Typography, Stack } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { AppBarClasses } from "react-admin";
 
-function Logo() {
+function RBACLogo() {
   return (
     <Stack
       direction={"row"}
@@ -14,7 +14,7 @@ function Logo() {
       }}
     >
       <Link
-        to="/"
+        to="/rbac"
         sx={{
           display: "flex",
           alignItems: "center",
@@ -31,11 +31,11 @@ function Logo() {
           fontWeight={500}
           variant="h6"
         >
-          CFIv2
+          RBAC
         </Typography>
       </Link>
     </Stack>
   );
 }
 
-export default Logo;
+export default RBACLogo;

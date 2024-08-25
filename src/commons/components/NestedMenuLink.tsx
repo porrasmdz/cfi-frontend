@@ -1,7 +1,7 @@
-import React, { forwardRef, ReactElement, ReactNode } from "react";
+import React, { forwardRef, ReactElement, ReactNode, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import clsx from "clsx";
-import { Link, LinkProps, useMatch, useMatches } from "react-router-dom";
+import { Link, LinkProps, useMatch, useMatches, useLocation } from "react-router-dom";
 import {
   MenuItem,
   ListItemIcon,
@@ -45,12 +45,17 @@ export const NestedMenuItemLink = forwardRef<any, NestedMenuItemLinkProps>(
     const to =
       (typeof props.to === "string" ? props.to : props.to.pathname) || "";
     const match = useMatch({ path: to, end: to === `${basename}/` });
-    const matchMulti = useMatches()
+    const location = useLocation();
+    const currentPath = location.pathname.split("/");
+    
     const matchingChildTarget = multiTarget?.find((target)=> {
-      return matchMulti.length > 0 ? target === matchMulti[0].pathname.replace("/","") : null
+     return currentPath.length > 0 ? target === currentPath[2] : null
     })
-    const hasChildMatch = matchingChildTarget != null
-
+    const hasChildMatch = matchingChildTarget != null;
+    
+    useEffect(()=>{
+      console.log(currentPath)
+    },[to])
     const renderMenuItem = () => {
       return !children ? (
         <StyledMenuItem

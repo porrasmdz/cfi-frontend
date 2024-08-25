@@ -95,7 +95,7 @@ const customProvider = {
   },
   deleteMany: (resource: any, params: any) =>
     Promise.all(
-        params.ids.map(id =>
+        params.ids.map((id: any) =>
             httpClient(`${apiUrl}/${resource}/${id}`, {
                 method: 'DELETE',
             })

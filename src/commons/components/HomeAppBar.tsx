@@ -9,7 +9,7 @@ import {
   Box,
   Theme,
 } from "@mui/material";
-import CFILogo from "./CFILogo";
+import HomeLogo from "./HomeLogo";
 import CFINavbarMenu from "./CFINavbarMenu";
 import { useLocales } from "ra-core";
 import {
@@ -23,7 +23,7 @@ import {
   AppBarProps,
 } from "react-admin";
 
-export const CFIAppBar: FC<AppBarProps> = memo((props) => {
+export const HomeAppBar: FC<AppBarProps> = memo((props) => {
   const {
     alwaysOn,
     children,
@@ -47,9 +47,7 @@ export const CFIAppBar: FC<AppBarProps> = memo((props) => {
           variant={isXSmall ? "regular" : "dense"}
           className={AppBarClasses.toolbar}
         >
-          <SidebarToggleButton className={AppBarClasses.menuButton} />
-          <CFILogo />
-          <CFINavbarMenu/>
+          <HomeLogo />
           <Box flex={1} />
 
           {children}
@@ -83,7 +81,6 @@ const DefaultToolbar = () => {
 const defaultToolbarElement = <DefaultToolbar />;
 
 const DefaultUserMenu = <UserMenu />;
-
 
 const PREFIX = "RaAppBar";
 

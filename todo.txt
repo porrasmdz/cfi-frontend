@@ -5,6 +5,7 @@ BUGS:
 [DONE]    * Optimize product with count_registries by creating endpoint with cyclic_count_id required  
 [DONE +-] * Make custom datatable to trigger creationg model on row click 
 [DONE WO PD] * Return Reports with pandas ETL pipeline 
+[DONE]    * Fix auth token bug redirecting to unauthorized when token is invalid and bugging the UI
 * Los formularios no deben permitir mas de 4 cifras decimales
 * No puedo poner numeros no enteros en conteo fisico
 * Implementar ETL al cargar un excel para limpiar cifras decimales,
@@ -33,9 +34,9 @@ CyclicCount Module:
 [DONE]    3.1 Buscar tmb [DONE]
 [DONE]    4. Tabla de productos editable pero solo el campo unidades [DONE]
 [DONE]    5. Posibilidad de ocultar o agregar columnas y paginacion? [DONE]
-6. Debo poder cerrar conteo (antes debo optimizar los productos) [FALTA OMITIR 
+[DONE] 6. Debo poder cerrar conteo (antes debo optimizar los productos) [FALTA OMITIR 
                                     AQUELLOS QUE NO TIENEN CONTEO FISICO O NO ES IGUAL A SYSTEM UNITS]
-6.1 Crear un SQL VIEW para q se actualice los datos y las sumas del conteo
+[DONE] 6.1 Crear un SQL VIEW para q se actualice los datos y las sumas del conteo
 
 Companies Module:
 [DONE]    1. Crear la vista de lista con sus filtros y funcionalidad de archivar [DONE]
